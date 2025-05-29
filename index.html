@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>LOVE CALCULATOR</title>
+    <style>
+      body {
+    position: relative; /* Needed for ::before to be positioned correctly */
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* fallback color */
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: ""; /* Empty string, no visible text */
+    position: fixed; /* Fixed position to cover the viewport */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('https://imgs.search.brave.com/UNxyp2oCAsnLshor4LPNHOJfIbdGfB4Z1EX5HGC1wyk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzEyLzMzLzUyLzI1/LzM2MF9GXzEyMzM1/MjI1MDlfdDBaWjh4/U25FbFhuVU1QVDZY/TjRhS0ZvVVFJUU1o/SkkuanBn');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7; /* Adjust transparency */
+    z-index: -1;
+}
+        h1{
+            text-align: center;
+            color: red;
+            font-size: 70px;
+        }
+        span {
+            display: flex;
+            color:pink;
+            text-align: center;
+            justify-content: center;
+            margin-top: 10px;
+            align-items: center;
+            font-size: 35px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+        
+          
+        input {
+            display: flex;
+            justify-content: center;
+            margin: 10px auto;
+            align-items: center;
+            width: 300px;
+            height: 30px;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        button {
+            display: flex;
+            justify-content: center;
+            margin: 10px auto;
+            align-items: center;
+            width: 150px;
+            height: 40px;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-size: 20px;
+            background-color: red;
+            color : white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Love Calculator</h1>
+        
+        <span>Enter first person name</span>
+        <input  class="firstPersonName" type="text" placeholder = "Enter first person name" id="firstPersonName">
+        <br>
+        <span>Enter second person name</span>
+        <input class="secondPersonName" type="text" placeholder = "Enter second person name" id="secondPersonName">
+        <div class="results">
+            <button id="calculateButton">Check results</button>
+        </div>
+    </div>
+    <script>
+    document.getElementById("calculateButton").addEventListener("click", function () {
+        const name1 = document.getElementById("firstPersonName").value.trim();
+        const name2 = document.getElementById("secondPersonName").value.trim();
+
+        if (!name1 || !name2) {
+            alert("Please enter both names.");
+            return;
+        }
+
+        const loveScore = Math.floor(Math.random() * 100) + 1; // 1 to 100
+
+        let message = `${name1} ❤️ ${name2} = ${loveScore}% compatibility!`;
+
+        // Add result display logic
+        let resultDiv = document.querySelector(".results");
+        let resultOutput = document.getElementById("loveResult");
+
+        if (!resultOutput) {
+            resultOutput = document.createElement("p");
+            resultOutput.id = "loveResult";
+            resultOutput.style.fontSize = "40px";
+            resultOutput.style.color = "pink";
+            resultOutput.style.textAlign = "center";
+            resultOutput.style.marginTop = "20px";
+            resultDiv.appendChild(resultOutput);
+        }
+
+        resultOutput.textContent = message;
+    });
+</script>
+</body>
+</html>
